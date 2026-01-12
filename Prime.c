@@ -10,7 +10,7 @@ int main()
         if (n % i == 0)
         {
             isPrime = 0;
-            break;
+            s break;
         }
     }
     if (isPrime)
