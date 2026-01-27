@@ -1,3 +1,3 @@
-
-        printf("NOT DIGIT\n");
-}
+2)
+    {
+        fptr = fopen("int.txt", "r");
