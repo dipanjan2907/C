@@ -1,5 +1,5 @@
 #include <stdio.h>
-int insertElem(int arr[], int size, int elem, int idx, int cap)
+int deleteElem(int arr[], int size, int idx, int cap)
 {
     if (size >= cap || idx > size || idx < 0)
     {
@@ -7,11 +7,10 @@ int insertElem(int arr[], int size, int elem, int idx, int cap)
     }
     else
     {
-        for (int i = size - 1; i >= idx; i--)
+        for (int i = idx; i < size; i++)
         {
-            arr[i + 1] = arr[i];
+            arr[i] = arr[i + 1];
         }
-        arr[idx] = elem;
         return 1;
     }
 }
@@ -24,17 +23,17 @@ void display(int arr[], int size)
 int main()
 {
     int arr[20] = {3, 11, 27, 42, 89};
-    int elem = 31, idx = 2, cap = 20, size = 5;
+    int idx = 3, cap = 20, size = 5;
     display(arr, size);
-    int res = insertElem(arr, size, elem, idx, cap);
+    int res = deleteElem(arr, size, idx, cap);
     if (res == 1)
     {
-        size += 1;
-        printf("Insertion successful! \n");
+        size -= 1;
+        printf("Deletion successful! \n");
         display(arr, size);
     }
     else
-        printf("Insertion unsuccessful \n");
+        printf("Deletion unsuccessful \n");
 
     return 0;
 }
