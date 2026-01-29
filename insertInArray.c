@@ -15,7 +15,7 @@ int insertElem(int arr[], int size, int elem, int idx, int cap)
         return 1;
     }
 }
-int display(int arr[], int size)
+void display(int arr[], int size)
 {
     for (int i = 0; i < size; i++)
         printf("%d ", arr[i]);
@@ -24,10 +24,10 @@ int display(int arr[], int size)
 int main()
 {
     int arr[20] = {3, 11, 27, 42, 89};
-    int elem = 31, idx = 4, cap = 20, size = 5;
+    int elem = 31, idx = 2, cap = 20, size = 5;
     display(arr, size);
-    insertElem(arr, size, elem, idx, cap);
-    if (insertElem)
+    int res = insertElem(arr, size, elem, idx, cap);
+    if (res == 1)
     {
         size += 1;
         printf("Insertion successful! \n");
