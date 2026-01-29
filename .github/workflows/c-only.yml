@@ -2,6 +2,8 @@ name: Allow only C files
 
 on:
   pull_request:
+    paths-ignore:
+      - README.md
 
 jobs:
   check-files:
@@ -10,15 +12,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check file extensions
+      - name: Check all files in the PR
         run: |
-          files=$(git diff --name-only origin/${{ github.base_ref }})
+          echo "Checking PR for non-C files..."
+          non_c_files=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -vE '\.(c|h)$' || true)
 
-          for file in $files; do
-            if [[ ! "$file" =~ \.(c|h)$ ]]; then
-              echo "❌ Non-C file detected: $file"
-              exit 1
-            fi
-          done
+          if [ -n "$non_c_files" ]; then
+            echo "❌ Non-C files detected:"
+            echo "$non_c_files"
+            exit 1
+          fi
 
-          echo "✅ Only C files detected"
+          echo "✅ All files are C"
