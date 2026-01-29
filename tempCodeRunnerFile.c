@@ -1,5 +1,3 @@
-float n;
-  // printf("Enter a real number: "); 
-  // scanf("%f",&n);
-  // int x=(float)n;
-  // if(n-x==0)
+2)
+    {
+        fptr = fopen("int.txt", "r");
