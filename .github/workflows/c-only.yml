@@ -1,0 +1,23 @@
+name: C-only guard
+
+on:
+  pull_request:
+
+jobs:
+  block-non-c:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Reject non-C files
+        run: |
+          bad=$(git ls-files | grep -vE '\.(c|h|md)$' || true)
+
+          if [ -n "$bad" ]; then
+            echo "❌ Non-C files detected:"
+            echo "$bad"
+            exit 1
+          fi
+
+          echo "✅ Repo contains only C files"
