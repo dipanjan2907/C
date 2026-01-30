@@ -1,26 +1,23 @@
-name: Allow only C files
+name: C-only guard
 
 on:
   pull_request:
-    paths-ignore:
-      - README.md
 
 jobs:
-  check-files:
+  block-non-c:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check all files in the PR
+      - name: Reject non-C files
         run: |
-          echo "Checking PR for non-C files..."
-          non_c_files=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep -vE '\.(c|h)$' || true)
+          bad=$(git ls-files | grep -vE '\.(c|h|md)$' || true)
 
-          if [ -n "$non_c_files" ]; then
+          if [ -n "$bad" ]; then
             echo "❌ Non-C files detected:"
-            echo "$non_c_files"
+            echo "$bad"
             exit 1
           fi
 
-          echo "✅ All files are C"
+          echo "✅ Repo contains only C files"
