@@ -69,9 +69,9 @@ int main(void)
     second->val = 27;
     second->next = NULL;
 
-    printf("Linked List before Insertions");
+    printf("Linked List before Insertions\n");
     traversal(head);
-    printf("\n Linked List after Insertions");
+    printf("\nLinked List after Insertions\n");
     head = insertAtFirst(head, 43);
     head = insertAtIndex(head, 51, 3);
     head = insertAtEnd(head, 10);
