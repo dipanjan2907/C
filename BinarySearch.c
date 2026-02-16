@@ -1,4 +1,5 @@
 #include <stdio.h>
+// divide and conquer
 int binarySearch(int *arr, int search, int size)
 {
     int low = 0, high = size;
