@@ -4,9 +4,15 @@ int power(int base, int exp)
     if (exp == 0)
         return 1;
     if (exp % 2 == 0)
-        return power(base, exp / 2) * power(base, exp / 2);
+    {
+        int half = power(base, exp / 2);
+        return half * half;
+    }
     else
-        return base * power(base, exp / 2) * power(base, exp / 2);
+    {
+        int half = power(base, exp / 2);
+        return base * half * half;
+    }
 }
 int reverseExponentiation(int n)
 {
