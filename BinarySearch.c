@@ -19,7 +19,6 @@ int main()
     int arr[10] = {0, 1, 2, 3, 4, 6, 7, 9, 11, 23};
     int search = 9;
     int size = (sizeof(arr) / sizeof(arr[0])) - 1;
-    ;
     int res = binarySearch(arr, search, size);
     if (res != -1)
         printf("Found at index %d", res);

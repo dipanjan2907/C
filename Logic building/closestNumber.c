@@ -5,9 +5,15 @@ int findClosestandDivisible(int m, int n)
     int q = n / m;
     int n1 = q * m;
     int n2 = (m * n > 0) ? m * (q + 1) : m * (q - 1);
+<<<<<<< HEAD
     if (abs(n - n1) < abs(n - n2))
         return n1;
     return n2;
+=======
+     if (abs(n - n1) > abs(n - n2))
+        return n2;
+    return n1;
+>>>>>>> 5bc549909f0ea1d15c5d53de9d19f79107305c8a
 }
 int main(void)
 {
