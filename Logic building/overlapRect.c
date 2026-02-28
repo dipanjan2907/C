@@ -5,12 +5,12 @@ struct Point
 };
 int overlap(struct Point l1, struct Point r1, struct Point l2, struct Point r2)
 {
-    if (l1.x > r2.x || l2.x > r1.x)
+    if (l1.x > r2.x || l2.x > r1.x) // left edge of rect1 to right of rect2's right edge
         return 0;
     if (l1.y < r2.y || l2.y < r1.y)
         return 0;
 
-    return 1; // DO NOT OVERLAP
+    return 1; // DO OVERLAP
 }
 int main()
 {
