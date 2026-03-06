@@ -39,6 +39,7 @@ void display(int *stack, int top)
 
     printf("-----\n");
 }
+
 int main()
 {
     int stkSize;
