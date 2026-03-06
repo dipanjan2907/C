@@ -1,27 +1,26 @@
 #include <stdio.h>
-int SelectionSort(int arr[], int size)
-{
-    int i, j, flag, smallestIndex;
-    for (i = 0; i < size - 1; i++)
-    {
-        smallestIndex = i;
-        for (j = i + 1; j < size; j++)
-        {
-            if (arr[j] < arr[smallestIndex])
-                smallestIndex = j;
-        }
-        int temp = arr[i];
-        arr[i] = arr[smallestIndex];
-        arr[smallestIndex] = temp;
-    }
-}
+
 int main()
 {
     int arr[10] = {7, 3, 6, 4, 2, 1, 9, 11, 23, 0};
-    SelectionSort(arr, 10);
-    for (int i = 0; i < 10; i++)
+    int n = 10, temp;
+    for (int i = 0; i < n - 1; i++)
     {
-        printf("%d ", arr[i]);
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++)
+        {
+
+            if (arr[min_idx] > arr[j])
+            {
+                min_idx = j;
+            }
+        }
+        temp = arr[i];
+        arr[i] = arr[min_idx];
+        arr[min_idx] = temp;
     }
+
+    for (int i = 0; i < n; i++)
+        printf("%d ", arr[i]);
     return 0;
 }
