@@ -26,6 +26,7 @@ int pop(int *stack, int top)
     top = top - 1;
     return top;
 }
+
 void display(int *stack, int top)
 {
     if (top == -1)
