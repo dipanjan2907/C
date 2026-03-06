@@ -26,21 +26,36 @@ int pop(int *stack, int top)
     top = top - 1;
     return top;
 }
-void display(int *stack, int size)
+
+void display(int *stack, int top)
 {
-    for (int i = 0; i <= size; i++)
-        printf("%d ", stack[i]);
+    if (top == -1)
+    {
+        printf("Stack Empty\n");
+        return;
+    }
+    for (int i = top; i >= 0; i--)
+        printf("| %d |\n", stack[i]);
+
+    printf("-----\n");
 }
+
 int main()
 {
-    int item, stack[5], top = -1;
+    int stkSize;
+    printf("Enter Size of Stack: ");
+    scanf("%d", &stkSize);
+    int item, stack[stkSize], top = -1;
 
     printf("Item: ");
     scanf("%d", &item);
 
-    top = push(stack, top, 5, item);
-    top = push(stack, top, 5, item * 2);
-    top = push(stack, top, 5, item * 3);
+    for (int i = 1; i <= stkSize; i++)
+        top = push(stack, top, stkSize, item * i);
+
+    printf("\nStack now\n");
+    display(stack, top);
+
     top = pop(stack, top);
     printf("\nStack now\n");
     display(stack, top);
