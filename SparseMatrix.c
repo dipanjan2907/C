@@ -1,15 +1,15 @@
 #include <stdio.h>
 int isSparse(int row, int col, int arr[row][col])
 {
-    int c = 0;
+    int zero = 0;
     for (int i = 0; i < row; i++)
     {
         for (int j = 0; j < col; j++)
             if (arr[i][j] == 0)
-                c++;
+                zero++;
     }
-    int nonZero = (row * col) - c;
-    if (c > nonZero)
+    int nonZero = (row * col) - zero;
+    if (zero > nonZero)
         return nonZero;
     return 0;
 }
