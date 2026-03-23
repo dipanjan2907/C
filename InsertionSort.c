@@ -15,7 +15,7 @@ int insertionSort(int *arr, int size)
         arr[j + 1] = key;
     }
 }
-int main(void)
+int main()
 {
     int arr[5] = {5, 2, 4, 7, 1};
     insertionSort(arr, 5);
