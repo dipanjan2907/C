@@ -21,18 +21,9 @@ void dequeue(int q[], int *front, int *rear)
     }
     printf("Popped Element: %d\n", q[*front]);
     (*front)++;
-    if (*front > *rear)
-    {
-        *front = *rear = -1;
-    }
 }
 void display(int q[], int front, int rear)
 {
-    if (front == -1 || front > rear)
-    {
-        printf("Queue is Empty!\n\n");
-        return;
-    }
     printf("\nQUEUE: ");
     for (int i = front; i <= rear; i++)
         printf("%d ", q[i]);
@@ -47,7 +38,7 @@ int main()
     int ch = 1;
     while (ch != 0)
     {
-        printf("0. Exit\n1. Insert\n2. Delete\n3. Display\nEnter choice: ");
+        printf("0. Exit\n1. Insert into QUEUE\n2. Delete from QUEUE\n3. Show the QUEUE\nEnter choice: ");
         scanf("%d", &ch);
         switch (ch)
         {

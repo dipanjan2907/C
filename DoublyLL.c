@@ -9,6 +9,11 @@ struct Node
 struct Node *createNode(int data)
 {
     struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    if (newNode == NULL)
+    {
+        printf("Memory allocation failed");
+        exit(1);
+    }
     newNode->val = data;
     newNode->prev = NULL;
     newNode->next = NULL;
@@ -44,20 +49,62 @@ struct Node *insertAtEnd(struct Node *head, int data)
     newNode->prev = temp;
     return head;
 }
+struct Node *deleteAtBeginning(struct Node *head)
+{
+    if (head == NULL)
+    {
+        return NULL;
+    }
+
+    struct Node *temp = head;
+    head = head->next;
+
+    if (head != NULL)
+    {
+        head->prev = NULL;
+    }
+
+    free(temp);
+    return head;
+}
+
+struct Node *deleteAtEnd(struct Node *head)
+{
+    if (head == NULL)
+        return NULL;
+    if (head->next == NULL)
+    {
+        free(head);
+        return NULL;
+    }
+    struct Node *ptr = head;
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->prev->next = NULL;
+    free(ptr);
+    return head;
+}
 void traversal(struct Node *head)
 {
     struct Node *ptr = head;
     while (ptr != NULL)
     {
-        printf("Element %d\n", ptr->val);
+        printf("Element: %d\n", ptr->val);
         ptr = ptr->next;
     }
+    printf("\n");
 }
 int main()
 {
     struct Node *head = NULL;
-    head = insertAtBeginning(head, 5);
+    head = insertAtBeginning(head, 1);
     head = insertAtBeginning(head, 2);
-    head = insertAtEnd(head, 10);
+    head = insertAtEnd(head, 3);
     traversal(head);
+    head = deleteAtBeginning(head);
+    head = deleteAtEnd(head);
+    traversal(head);
+    return 0;
 }
