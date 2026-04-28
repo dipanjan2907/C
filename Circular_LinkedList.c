@@ -4,8 +4,7 @@ typedef struct Node
 {
     int val;
     struct Node *next;
-} Node;
-Node *createNode(int data)
+} Node Node *createNode(int data)
 {
     Node *newNode = (Node *)malloc(sizeof(Node *));
     newNode->val = data;
