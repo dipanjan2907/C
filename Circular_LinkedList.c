@@ -31,7 +31,7 @@ Node *insertAtFirst(Node *head, int data)
 
     if (head == NULL)
     {
-        newNode->next = newNode; // points to itself
+        newNode->next = newNode;
         return newNode;
     }
 
