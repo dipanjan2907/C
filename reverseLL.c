@@ -6,7 +6,9 @@ typedef struct Node
     Node *next;
 
 } Node;
-void create(Node head) {}
+void create(Node *head)
+{
+}
 int main()
 {
 
