@@ -18,13 +18,20 @@ void traversal(struct Node *ptr)
 struct Node *insertAtFirst(struct Node *head, int data)
 {
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    if (head == NULL)
+        return head;
     ptr->next = head;
     ptr->val = data;
     return ptr;
 }
 struct Node *insertAtIndex(struct Node *head, int data, int index)
 {
+    if (index == 0)
+        return insertAtFirst(head, data);
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    if (ptr == NULL)
+        return head;
+
     struct Node *p = head;
     for (int i = 1; i < index; i++)
     {

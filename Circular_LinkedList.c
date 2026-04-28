@@ -1,53 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-struct Node
+typedef struct Node
 {
     int val;
     struct Node *next;
-};
-void traversal(struct Node *head)
+} Node;
+Node *createNode(int data)
 {
-    struct Node *ptr = head;
-    do
-    {
-        printf("Element: %d\n", ptr->val);
-        ptr = ptr->next;
-
-    } while (ptr != head);
+    Node *newNode = (Node *)malloc(sizeof(Node *));
+    newNode->val = data;
+    newNode->val = NULL;
+    return newNode;
 }
 struct Node *insertAtFirst(struct Node *head, int data)
 {
-    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    ptr->val = data;
-
-    struct Node *p = head->next;
-    while (p->next != head)
-        p = p->next;
-    p->next = ptr;
-    ptr->next = head;
-    head = ptr;
+    Node *newNode = createNode(data);
+    if (head == NULL)
+    {
+        newNode->next = newNode;
+        return newNode;
+    }
+    Node *temp = head;
+    while (temp->next != head)
+    {
+        temp = temp->next;
+    }
+    newNode->next = head;
+    temp->next = newNode;
+    head = newNode;
     return head;
 }
-
+void traversal(Node *head)
+{
+}
 int main(void)
 {
-    struct Node *head = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *first = (struct Node *)malloc(sizeof(struct Node));
-    struct Node *second = (struct Node *)malloc(sizeof(struct Node));
-
-    head->val = 19;
-    head->next = first;
-    first->val = 33;
-    first->next = second;
-    second->val = 27;
-    second->next = head;
-
-    printf("Circular Linked List before Insertions\n");
-    traversal(head);
-    printf("\nCircular Linked List after Insertions\n");
-    head = insertAtFirst(head, 43);
-    traversal(head);
-
-    return 0;
 }
