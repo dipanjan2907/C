@@ -19,25 +19,42 @@ Node *createBT(int preorder[], int *idx)
     return newNode;
 }
 
-void preorderTraversal(Node *root)
+void preOrder(Node *root)
 {
     if (root == NULL)
         return;
-    if (root->left != NULL)
-        printf("%d -> %d\n", root->data, root->left->data);
-
-    if (root->right != NULL)
-        printf("%d -> %d\n", root->data, root->right->data);
-
-    preorderTraversal(root->left);
-    preorderTraversal(root->right);
+    printf("%d ", root->data);
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
+void inOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+    inOrder(root->left);
+    printf("%d ", root->data);
+    inOrder(root->right);
+}
+
+void postOrder(Node *root)
+{
+    if (root == NULL)
+        return;
+    preOrder(root->left);
+    preOrder(root->right);
+    printf("%d ", root->data);
+}
 int main()
 {
     int preorder[] = {10, 5, 3, -1, -1, 7, -1, -1, 20, 15, -1, -1, -1};
     int idx = -1;
     Node *root = createBT(preorder, &idx);
-    preorderTraversal(root);
+    preOrder(root);
+    printf(" \n");
+    inOrder(root);
+    printf(" \n");
+    postOrder(root);
+    printf(" \n");
     return 0;
 }
