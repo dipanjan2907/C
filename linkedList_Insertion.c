@@ -18,7 +18,7 @@ void traversal(struct Node *ptr)
 struct Node *insertAtFirst(struct Node *head, int data)
 {
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    if (head == NULL)
+    if (ptr == NULL)
         return head;
     ptr->next = head;
     ptr->val = data;
