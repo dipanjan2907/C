@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 int main()
 {
     int arr[10] = {7, 3, 6, 4, 2, 1, 9, 11, 23, 0};
@@ -11,9 +10,7 @@ int main()
         {
 
             if (arr[min_idx] > arr[j])
-            {
                 min_idx = j;
-            }
         }
         temp = arr[i];
         arr[i] = arr[min_idx];
